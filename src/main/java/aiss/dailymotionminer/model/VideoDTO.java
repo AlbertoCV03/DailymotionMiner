@@ -1,6 +1,7 @@
 
 package aiss.dailymotionminer.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -10,21 +11,25 @@ import javax.annotation.processing.Generated;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
     "id",
-    "screenname",
+    "title",
     "description",
     "created_time",
+        "tags"
 })
 @Generated("jsonschema2pojo")
-public class Channel {
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class VideoDTO {
 
     @JsonProperty("id")
     private String id;
-    @JsonProperty("screenname")
+    @JsonProperty("title")
     private String name;
     @JsonProperty("description")
     private String description;
     @JsonProperty("created_time")
-    private Integer createdTime;
+    private Integer releaseTime;
+    @JsonProperty("tags")
+    private Comment comment;
 
     @JsonProperty("id")
     public String getId() {
@@ -36,12 +41,12 @@ public class Channel {
         this.id = id;
     }
 
-    @JsonProperty("screenname")
+    @JsonProperty("title")
     public String getName() {
         return name;
     }
 
-    @JsonProperty("screenname")
+    @JsonProperty("title")
     public void setName(String name) {
         this.name = name;
     }
@@ -57,22 +62,33 @@ public class Channel {
     }
 
     @JsonProperty("created_time")
-    public Integer getCreatedTime() {
-        return createdTime;
+    public Integer getReleaseTime() {
+        return releaseTime;
     }
 
     @JsonProperty("created_time")
-    public void setCreatedTime(Integer createdTime) {
-        this.createdTime = createdTime;
+    public void setReleaseTime(Integer releaseTime) {
+        this.releaseTime = releaseTime;
+    }
+
+    @JsonProperty("tags")
+    public Comment getComment() {
+        return comment;
+    }
+
+   @JsonProperty("tags")
+    public void setComment(Comment comment) {
+        this.comment = comment;
     }
 
     @Override
     public String toString() {
-        return "Channel{" +
+        return "Video{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", createdTime=" + createdTime +
+                ", releaseTime=" + releaseTime +
+                ", comments=" + comment +
                 '}';
     }
 }

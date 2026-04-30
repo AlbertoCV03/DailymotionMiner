@@ -1,6 +1,7 @@
 
 package aiss.dailymotionminer.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -15,7 +16,8 @@ import javax.annotation.processing.Generated;
     "avatar_720_url"
 })
 @Generated("jsonschema2pojo")
-public class User {
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class UserDTO {
 
     @JsonProperty("id")
     private String id;

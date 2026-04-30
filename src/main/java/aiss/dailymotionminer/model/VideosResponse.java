@@ -1,7 +1,6 @@
 
 package aiss.dailymotionminer.model;
 
-import java.util.List;
 import javax.annotation.processing.Generated;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -9,31 +8,33 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+import java.util.List;
+
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "tags"
+    "list"
 })
 @Generated("jsonschema2pojo")
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Comment {
+public class VideosResponse {
 
-    @JsonProperty("tags")
-    private List<String> text;
+    @JsonProperty("list")
+    private List<Video> list;
 
-    @JsonProperty("tags")
-    public List<String> getText() {
-        return text;
+    @JsonProperty("list")
+    public java.util.List<Video> getList() {
+        return list;
     }
 
-    @JsonProperty("tags")
-    public void setText(List<String> text) {
-        this.text = text;
+    @JsonProperty("list")
+    public void setList(java.util.List<Video> list) {
+        this.list = list;
     }
 
     @Override
     public String toString() {
-        return "Comment{" +
-                "text=" + text +
+        return "VideosResponse{" +
+                "list=" + list +
                 '}';
     }
 }
