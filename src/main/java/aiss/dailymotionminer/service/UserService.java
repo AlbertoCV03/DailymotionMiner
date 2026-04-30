@@ -14,7 +14,7 @@ public class UserService {
 
     private static final String BASE_URI = "https://api.dailymotion.com/video";
 
-    public UserDTO getUserById(String id){
+    public UserDTO findUserById(String id){
         ChannelUser channelUser=restTemplate.getForObject(BASE_URI+"/"+id, ChannelUser.class);
         if (channelUser==null){
             return null;//excepcion

@@ -16,7 +16,7 @@ public class VideoService {
 
     private static final String BASE_URI = "https://api.dailymotion.com";
 
-    public List<Video> getAllVideosOfAChannelById(String userId) {
+    public List<Video> findAllVideosOfAChannelById(String userId) {
         VideosResponse videos=restTemplate.getForObject(BASE_URI+"/user"+userId+"/videos", VideosResponse.class);
         if (videos==null){
             return null;//excepcion
@@ -24,7 +24,7 @@ public class VideoService {
         return videos.getList();
     }
 
-    public Video getVideoById(String id){
+    public Video findVideoById(String id){
         Video video=restTemplate.getForObject(BASE_URI+"/video"+id+"?fields=id,title,description,created_time", Video.class);
         if (video==null){
             return null;//excepcion

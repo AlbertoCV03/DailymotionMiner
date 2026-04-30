@@ -18,8 +18,8 @@ public class CaptionService {
 
     private static final String BASE_URI = "https://api.dailymotion.com/video";
 
-    public List<CaptionProperties> getCaptionByVideoId(Video video){
-        Caption caption=restTemplate.getForObject(BASE_URI+"/"+video.getId()+"/subtitles?fields=id,url,language", Caption.class);
+    public List<CaptionProperties> findCaptionByVideoId(String videoId){
+        Caption caption=restTemplate.getForObject(BASE_URI+"/"+videoId+"/subtitles?fields=id,url,language", Caption.class);
         if (caption == null || caption.getCaptionProperties() == null) {
             return List.of();
         }

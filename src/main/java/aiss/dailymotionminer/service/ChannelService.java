@@ -14,8 +14,8 @@ public class ChannelService {
 
     private static final String BASE_URI = "https://api.dailymotion.com/user";
 
-    public ChannelDTO getChannelById(String id){
-        ChannelUser channelUser=restTemplate.getForObject(BASE_URI+"/"+id, ChannelUser.class);
+    public ChannelDTO findChannelById(String id){
+        ChannelUser channelUser=restTemplate.getForObject(BASE_URI+"/"+id+"?fields=id,screenname,description,created_time,username,url,avatar_720_url", ChannelUser.class);
         if (channelUser==null){
             return null;//excepcion
         }
