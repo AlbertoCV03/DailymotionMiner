@@ -82,49 +82,25 @@ public class Caption {
     }
 
     @JsonProperty("list")
-    public java.util.List<CaptionProperties> getList() {
+    public java.util.List<CaptionProperties> getCaptionProperties() {
         return captionProperties;
     }
 
     @JsonProperty("list")
-    public void setList(java.util.List<CaptionProperties> captionProperties) {
+    public void setCaptionProperties(java.util.List<CaptionProperties> captionProperties) {
         this.captionProperties = captionProperties;
     }
 
     @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(Caption.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
-        sb.append("page");
-        sb.append('=');
-        sb.append(((this.page == null)?"<null>":this.page));
-        sb.append(',');
-        sb.append("limit");
-        sb.append('=');
-        sb.append(((this.limit == null)?"<null>":this.limit));
-        sb.append(',');
-        sb.append("explicit");
-        sb.append('=');
-        sb.append(((this.explicit == null)?"<null>":this.explicit));
-        sb.append(',');
-        sb.append("total");
-        sb.append('=');
-        sb.append(((this.total == null)?"<null>":this.total));
-        sb.append(',');
-        sb.append("hasMore");
-        sb.append('=');
-        sb.append(((this.hasMore == null)?"<null>":this.hasMore));
-        sb.append(',');
-        sb.append("list");
-        sb.append('=');
-        sb.append(((this.captionProperties == null)?"<null>":this.captionProperties));
-        sb.append(',');
-        if (sb.charAt((sb.length()- 1)) == ',') {
-            sb.setCharAt((sb.length()- 1), ']');
-        } else {
-            sb.append(']');
-        }
-        return sb.toString();
+    public String
+    toString() {
+        return "Caption{" +
+                "page=" + page +
+                ", limit=" + limit +
+                ", explicit=" + explicit +
+                ", total=" + total +
+                ", hasMore=" + hasMore +
+                ", captionProperties=" + captionProperties +
+                '}';
     }
-
 }

@@ -37,61 +37,42 @@ public class User {
     }
 
     @JsonProperty("username")
-    public String getUsername() {
+    public String getName() {
         return name;
     }
 
     @JsonProperty("username")
-    public void setUsername(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
     @JsonProperty("url")
-    public String getUrl() {
+    public String getUser_link() {
         return user_link;
     }
 
     @JsonProperty("url")
-    public void setUrl(String user_link) {
+    public void setUser_link(String user_link) {
         this.user_link = user_link;
     }
 
     @JsonProperty("avatar_720_url")
-    public String getAvatar720Url() {
+    public String getPicture_link() {
         return picture_link;
     }
 
     @JsonProperty("avatar_720_url")
-    public void setAvatar720Url(String picture_link) {
+    public void setPicture_link(String picture_link) {
         this.picture_link = picture_link;
     }
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(User.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
-        sb.append("id");
-        sb.append('=');
-        sb.append(((this.id == null)?"<null>":this.id));
-        sb.append(',');
-        sb.append("username");
-        sb.append('=');
-        sb.append(((this.name == null)?"<null>":this.name));
-        sb.append(',');
-        sb.append("url");
-        sb.append('=');
-        sb.append(((this.user_link == null)?"<null>":this.user_link));
-        sb.append(',');
-        sb.append("avatar720Url");
-        sb.append('=');
-        sb.append(((this.picture_link == null)?"<null>":this.picture_link));
-        sb.append(',');
-        if (sb.charAt((sb.length()- 1)) == ',') {
-            sb.setCharAt((sb.length()- 1), ']');
-        } else {
-            sb.append(']');
-        }
-        return sb.toString();
+        return "User{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", user_link='" + user_link + '\'' +
+                ", picture_link='" + picture_link + '\'' +
+                '}';
     }
-
 }

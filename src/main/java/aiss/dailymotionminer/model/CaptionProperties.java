@@ -33,12 +33,12 @@ public class CaptionProperties {
     }
 
     @JsonProperty("url")
-    public String getUrl() {
+    public String getLink() {
         return link;
     }
 
     @JsonProperty("url")
-    public void setUrl(String link) {
+    public void setLink(String link) {
         this.link = link;
     }
 
@@ -54,26 +54,10 @@ public class CaptionProperties {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(CaptionProperties.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
-        sb.append("id");
-        sb.append('=');
-        sb.append(((this.id == null)?"<null>":this.id));
-        sb.append(',');
-        sb.append("url");
-        sb.append('=');
-        sb.append(((this.link == null)?"<null>":this.link));
-        sb.append(',');
-        sb.append("language");
-        sb.append('=');
-        sb.append(((this.language == null)?"<null>":this.language));
-        sb.append(',');
-        if (sb.charAt((sb.length()- 1)) == ',') {
-            sb.setCharAt((sb.length()- 1), ']');
-        } else {
-            sb.append(']');
-        }
-        return sb.toString();
+        return "CaptionProperties{" +
+                "id='" + id + '\'' +
+                ", link='" + link + '\'' +
+                ", language='" + language + '\'' +
+                '}';
     }
-
 }

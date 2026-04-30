@@ -11,7 +11,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "id",
     "title",
     "description",
-    "created_time"
+    "created_time",
+        "tags"
 })
 @Generated("jsonschema2pojo")
 public class Video {
@@ -24,6 +25,8 @@ public class Video {
     private String description;
     @JsonProperty("created_time")
     private Integer releaseTime;
+    @JsonProperty("tags")
+    private Comment comment;
 
     @JsonProperty("id")
     public String getId() {
@@ -36,12 +39,12 @@ public class Video {
     }
 
     @JsonProperty("title")
-    public String getTitle() {
+    public String getName() {
         return name;
     }
 
     @JsonProperty("title")
-    public void setTitle(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -56,41 +59,33 @@ public class Video {
     }
 
     @JsonProperty("created_time")
-    public Integer getCreatedTime() {
+    public Integer getReleaseTime() {
         return releaseTime;
     }
 
     @JsonProperty("created_time")
-    public void setCreatedTime(Integer releaseTime) {
+    public void setReleaseTime(Integer releaseTime) {
         this.releaseTime = releaseTime;
+    }
+
+    @JsonProperty("tags")
+    public Comment getComment() {
+        return comment;
+    }
+
+   @JsonProperty("tags")
+    public void setComment(Comment comment) {
+        this.comment = comment;
     }
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(Video.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
-        sb.append("id");
-        sb.append('=');
-        sb.append(((this.id == null)?"<null>":this.id));
-        sb.append(',');
-        sb.append("title");
-        sb.append('=');
-        sb.append(((this.name == null)?"<null>":this.name));
-        sb.append(',');
-        sb.append("description");
-        sb.append('=');
-        sb.append(((this.description == null)?"<null>":this.description));
-        sb.append(',');
-        sb.append("createdTime");
-        sb.append('=');
-        sb.append(((this.releaseTime == null)?"<null>":this.releaseTime));
-        sb.append(',');
-        if (sb.charAt((sb.length()- 1)) == ',') {
-            sb.setCharAt((sb.length()- 1), ']');
-        } else {
-            sb.append(']');
-        }
-        return sb.toString();
+        return "Video{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", releaseTime=" + releaseTime +
+                ", comments=" + comment +
+                '}';
     }
-
 }
