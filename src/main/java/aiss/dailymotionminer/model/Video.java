@@ -8,13 +8,16 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+import java.util.List;
+
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
     "id",
     "title",
     "description",
     "created_time",
-        "tags"
+        "owner",
+        "tags",
 })
 @Generated("jsonschema2pojo")
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -28,8 +31,10 @@ public class Video {
     private String description;
     @JsonProperty("created_time")
     private Integer releaseTime;
+    @JsonProperty("owner")
+    private String ownerId;
     @JsonProperty("tags")
-    private Comment comment;
+    private List<String> comment;
 
     @JsonProperty("id")
     public String getId() {
@@ -71,13 +76,23 @@ public class Video {
         this.releaseTime = releaseTime;
     }
 
+    @JsonProperty("owner")
+    public String getOwnerId() {
+        return ownerId;
+    }
+
+    @JsonProperty("owner")
+    public void setOwnerId(String ownerId) {
+        this.ownerId = ownerId;
+    }
+
     @JsonProperty("tags")
-    public Comment getComment() {
+    public List<String> getComment() {
         return comment;
     }
 
    @JsonProperty("tags")
-    public void setComment(Comment comment) {
+    public void setComment(List<String> comment) {
         this.comment = comment;
     }
 
@@ -88,7 +103,8 @@ public class Video {
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", releaseTime=" + releaseTime +
-                ", comments=" + comment +
+                ", ownerId='" + ownerId + '\'' +
+                ", comment=" + comment +
                 '}';
     }
 }

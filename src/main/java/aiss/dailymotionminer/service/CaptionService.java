@@ -2,12 +2,10 @@ package aiss.dailymotionminer.service;
 
 import aiss.dailymotionminer.model.Caption;
 import aiss.dailymotionminer.model.CaptionProperties;
-import aiss.dailymotionminer.model.Video;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.awt.geom.RectangularShape;
 import java.util.List;
 
 @Service

@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import javax.annotation.processing.Generated;
+import java.util.List;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -14,7 +15,9 @@ import javax.annotation.processing.Generated;
     "title",
     "description",
     "created_time",
-        "tags"
+        "subtitles",
+        "tags",
+        "owner"
 })
 @Generated("jsonschema2pojo")
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -28,8 +31,14 @@ public class VideoDTO {
     private String description;
     @JsonProperty("created_time")
     private Integer releaseTime;
+    @JsonProperty("subtitles")
+    private List<CaptionProperties> captionProperties;
     @JsonProperty("tags")
-    private Comment comment;
+    private List<CommentDTO> comment;
+    @JsonProperty("owner")
+    private String ownerId;
+
+    private UserDTO user;
 
     @JsonProperty("id")
     public String getId() {
@@ -71,24 +80,54 @@ public class VideoDTO {
         this.releaseTime = releaseTime;
     }
 
+    @JsonProperty("subtitles")
+    public List<CaptionProperties> getCaptionProperties() {
+        return captionProperties;
+    }
+
+    @JsonProperty("subtitles")
+    public void setCaptionProperties(List<CaptionProperties> captionProperties) {
+        this.captionProperties = captionProperties;
+    }
+
     @JsonProperty("tags")
-    public Comment getComment() {
+    public List<CommentDTO> getComment() {
         return comment;
     }
 
    @JsonProperty("tags")
-    public void setComment(Comment comment) {
+    public void setComment(List<CommentDTO> comment) {
         this.comment = comment;
+    }
+
+    @JsonProperty("owner")
+    public String getOwnerId() {
+        return ownerId;
+    }
+
+    @JsonProperty("owner")
+    public void setOwnerId(String ownerId) {
+        this.ownerId = ownerId;
+    }
+
+    public UserDTO getUser() {
+        return user;
+    }
+
+    public void setUser(UserDTO user) {
+        this.user = user;
     }
 
     @Override
     public String toString() {
-        return "Video{" +
+        return "VideoDTO{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", releaseTime=" + releaseTime +
-                ", comments=" + comment +
+                ", captionProperties=" + captionProperties +
+                ", comment=" + comment +
+                ", user=" + user +
                 '}';
     }
 }

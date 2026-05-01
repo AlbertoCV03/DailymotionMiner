@@ -12,10 +12,10 @@ public class UserService {
     @Autowired
     RestTemplate restTemplate;
 
-    private static final String BASE_URI = "https://api.dailymotion.com/video";
+    private static final String BASE_URI = "https://api.dailymotion.com/user";
 
     public UserDTO findUserById(String id){
-        ChannelUser channelUser=restTemplate.getForObject(BASE_URI+"/"+id, ChannelUser.class);
+        ChannelUser channelUser=restTemplate.getForObject(BASE_URI+"/"+id+"/?fields=id,username,url,avatar_720_url", ChannelUser.class);
         if (channelUser==null){
             return null;//excepcion
         }

@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import javax.annotation.processing.Generated;
+import java.util.List;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -14,6 +15,7 @@ import javax.annotation.processing.Generated;
     "screenname",
     "description",
     "created_time",
+        "videos"
 })
 @Generated("jsonschema2pojo")
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -27,6 +29,8 @@ public class ChannelDTO {
     private String description;
     @JsonProperty("created_time")
     private Integer createdTime;
+    @JsonProperty("videos")
+    private List<VideoDTO> videos;
 
     @JsonProperty("id")
     public String getId() {
@@ -68,13 +72,24 @@ public class ChannelDTO {
         this.createdTime = createdTime;
     }
 
+    @JsonProperty("videos")
+    public List<VideoDTO> getVideos() {
+        return videos;
+    }
+
+    @JsonProperty("videos")
+    public void setVideos(List<VideoDTO> videos) {
+        this.videos = videos;
+    }
+
     @Override
     public String toString() {
-        return "Channel{" +
+        return "ChannelDTO{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", createdTime=" + createdTime +
+                ", videos=" + videos +
                 '}';
     }
 }

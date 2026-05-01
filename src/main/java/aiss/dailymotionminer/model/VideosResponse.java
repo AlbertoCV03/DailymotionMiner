@@ -19,15 +19,15 @@ import java.util.List;
 public class VideosResponse {
 
     @JsonProperty("list")
-    private List<Video> list;
+    private List<VideoDTO> list;
 
     @JsonProperty("list")
-    public java.util.List<Video> getList() {
+    public List<VideoDTO> getList() {
         return list;
     }
 
     @JsonProperty("list")
-    public void setList(java.util.List<Video> list) {
+    public void setList(List<VideoDTO> list) {
         this.list = list;
     }
 
