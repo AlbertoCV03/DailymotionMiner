@@ -14,10 +14,10 @@ public class UserService {
 
     private static final String BASE_URI = "https://api.dailymotion.com/user";
 
-    public UserDTO findUserById(String id){
-        ChannelUser channelUser=restTemplate.getForObject(BASE_URI+"/"+id+"/?fields=id,username,url,avatar_720_url", ChannelUser.class);
+    public UserDTO findUserById(String id) {
+        ChannelUser channelUser=restTemplate.getForObject(BASE_URI+"/"+id+"?fields=id,username,url,avatar_720_url", ChannelUser.class);
         if (channelUser==null){
-            return null;//excepcion
+            return new UserDTO();
         }
         UserDTO user=new UserDTO();
         user.setId(id);

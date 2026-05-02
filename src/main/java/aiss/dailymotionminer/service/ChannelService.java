@@ -21,12 +21,12 @@ public class ChannelService {
 
     private static final String BASE_URI = "https://api.dailymotion.com/user";
 
-    public ChannelDTO findChannelById(String id){
+    public ChannelDTO findChannelById(String id, int maxVideos, int maxComments){
         ChannelUser channelUser=restTemplate.getForObject(BASE_URI+"/"+id+"?fields=id,screenname,description,created_time,username,url,avatar_720_url", ChannelUser.class);
         if (channelUser==null){
-            return null;//excepcion
+            return null;
         }
-        List<VideoDTO> videos=videoService.findAllVideosOfAChannelById(id);
+        List<VideoDTO> videos=videoService.findAllVideosOfAChannelById(id, maxVideos, maxComments);
         ChannelDTO channel=new ChannelDTO();
         channel.setId(id);
         channel.setName(channelUser.getScreenname());
