@@ -16,12 +16,12 @@ public class ChannelController {
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public ChannelDTO getChannel(@PathVariable String id, @RequestParam (required = false, defaultValue = "10") int maxVideos, @RequestParam (required = false, defaultValue = "2") int maxComments) { return channelService.findChannelById(id, maxVideos, maxComments); }
+    public ChannelDTO getChannel(@PathVariable String id, @RequestParam (required = false, defaultValue = "10") int maxVideos, @RequestParam (required = false, defaultValue = "2") int maxPages) { return channelService.findChannelById(id, maxVideos, maxPages); }
 
     @PostMapping("/{id}")
     @ResponseStatus(HttpStatus.CREATED)
-    public ChannelDTO postChannel(@PathVariable String id, @RequestParam (required = false, defaultValue = "10") int maxVideos, @RequestParam (required = false, defaultValue = "2") int maxComments) {
-        ChannelDTO channelDTO=channelService.postChannelDTOById(id, maxVideos, maxComments);
+    public ChannelDTO postChannel(@PathVariable String id, @RequestParam (required = false, defaultValue = "10") int maxVideos, @RequestParam (required = false, defaultValue = "2") int maxPages) {
+        ChannelDTO channelDTO=channelService.postChannelDTOById(id, maxVideos, maxPages);
         return channelDTO;
     }
 }

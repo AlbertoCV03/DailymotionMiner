@@ -19,12 +19,11 @@ public class CommentService {
 
     private static final String BASE_URI = "https://api.dailymotion.com/video";
 
-    public List<CommentDTO> findComments(String videoId, int maxComments){
+    public List<CommentDTO> findComments(String videoId){
         Video video=restTemplate.getForObject(BASE_URI+"/"+videoId+"?fields=tags,created_time", Video.class);
         List<CommentDTO> res=new ArrayList<>();
         if (video != null && video.getComment() != null && !video.getComment().isEmpty()){
-            int limit=Math.min(maxComments, video.getComment().size());
-            for (int i=0; i<limit; i++) {
+            for (int i=0; i<video.getComment().size(); i++) {
                 CommentDTO commentDTO=new CommentDTO();
                 commentDTO.setId(UUID.randomUUID().toString());
                 commentDTO.setText(video.getComment().get(i));
