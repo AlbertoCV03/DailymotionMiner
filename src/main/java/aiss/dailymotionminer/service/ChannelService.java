@@ -3,7 +3,6 @@ package aiss.dailymotionminer.service;
 import aiss.dailymotionminer.model.ChannelDTO;
 import aiss.dailymotionminer.model.ChannelUser;
 import aiss.dailymotionminer.model.VideoDTO;
-import aiss.dailymotionminer.model.VideosResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -34,5 +33,11 @@ public class ChannelService {
         channel.setCreatedTime(channelUser.getCreatedTime());
         channel.setVideos(videos);
         return channel;
+    }
+
+    public ChannelDTO postChannelDTOById(String id, int maxVideos, int maxComments){
+        ChannelDTO channelDTO=findChannelById(id, maxVideos, maxComments);
+        restTemplate.postForObject("http://localhost:8080/api/channels", channelDTO, ChannelDTO.class);
+        return channelDTO;
     }
 }
