@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.net.http.HttpResponse;
 
 @RestController
-@RequestMapping("/dailymotion")
+@RequestMapping("/dailymotion/v1")
 public class ChannelController {
     @Autowired
     ChannelService channelService;
