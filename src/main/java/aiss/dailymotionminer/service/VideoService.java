@@ -27,14 +27,13 @@ public class VideoService {
     private static final String BASE_URI = "https://api.dailymotion.com";
 
     public List<VideoDTO> findAllVideosOfAChannelById(String userId, int maxVideos, int maxComments) {
-        VideosResponse videos=restTemplate.getForObject(BASE_URI+"/user/"+userId+"/videos", VideosResponse.class);
+        VideosResponse videos=restTemplate.getForObject(BASE_URI+"/user/"+userId+"/videos?limit="+maxVideos, VideosResponse.class);
         if (videos==null){
             return List.of();
         }
         List<VideoDTO> allVideos=videos.getList();
         List<VideoDTO> res=new ArrayList<>();
-        int limit=Math.min(maxVideos, allVideos.size());
-        for (int i=0; i<limit; i++){
+        for (int i=0; i<allVideos.size(); i++){
             String id=allVideos.get(i).getId();
             VideoDTO dto=findVideoById(id, maxComments);
             if (dto != null){
