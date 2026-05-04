@@ -12,12 +12,13 @@ import java.util.List;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
     "id",
-    "title",
+    "name",
     "description",
-    "created_time",
-        "subtitles",
-        "tags",
-        "owner"
+    "releaseTime",
+        "captions",
+        "comments",
+        "userId",
+        "user"
 })
 @Generated("jsonschema2pojo")
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -25,19 +26,17 @@ public class VideoDTO {
 
     @JsonProperty("id")
     private String id;
-    @JsonProperty("title")
+    @JsonProperty("name")
     private String name;
     @JsonProperty("description")
     private String description;
-    @JsonProperty("created_time")
+    @JsonProperty("releaseTime")
     private Integer releaseTime;
-    @JsonProperty("subtitles")
-    private List<CaptionProperties> captionProperties;
-    @JsonProperty("tags")
+    @JsonProperty("caption")
+    private List<CaptionPropertiesDTO> captionProperties;
+    @JsonProperty("comments")
     private List<CommentDTO> comment;
-    @JsonProperty("owner")
-    private String ownerId;
-
+    @JsonProperty("user")
     private UserDTO user;
 
     @JsonProperty("id")
@@ -50,12 +49,12 @@ public class VideoDTO {
         this.id = id;
     }
 
-    @JsonProperty("title")
+    @JsonProperty("name")
     public String getName() {
         return name;
     }
 
-    @JsonProperty("title")
+    @JsonProperty("name")
     public void setName(String name) {
         this.name = name;
     }
@@ -70,50 +69,42 @@ public class VideoDTO {
         this.description = description;
     }
 
-    @JsonProperty("created_time")
+    @JsonProperty("releaseTime")
     public Integer getReleaseTime() {
         return releaseTime;
     }
 
-    @JsonProperty("created_time")
+    @JsonProperty("releaseTime")
     public void setReleaseTime(Integer releaseTime) {
         this.releaseTime = releaseTime;
     }
 
-    @JsonProperty("subtitles")
-    public List<CaptionProperties> getCaptionProperties() {
+    @JsonProperty("caption")
+    public List<CaptionPropertiesDTO> getCaptionProperties() {
         return captionProperties;
     }
 
-    @JsonProperty("subtitles")
-    public void setCaptionProperties(List<CaptionProperties> captionProperties) {
+    @JsonProperty("caption")
+    public void setCaptionProperties(List<CaptionPropertiesDTO> captionProperties) {
         this.captionProperties = captionProperties;
     }
 
-    @JsonProperty("tags")
+    @JsonProperty("comments")
     public List<CommentDTO> getComment() {
         return comment;
     }
 
-   @JsonProperty("tags")
+   @JsonProperty("comments")
     public void setComment(List<CommentDTO> comment) {
         this.comment = comment;
     }
 
-    @JsonProperty("owner")
-    public String getOwnerId() {
-        return ownerId;
-    }
-
-    @JsonProperty("owner")
-    public void setOwnerId(String ownerId) {
-        this.ownerId = ownerId;
-    }
-
+    @JsonProperty("user")
     public UserDTO getUser() {
         return user;
     }
 
+    @JsonProperty("user")
     public void setUser(UserDTO user) {
         this.user = user;
     }

@@ -51,7 +51,7 @@ public class VideoService {
         }
         VideoDTO dto=new VideoDTO();
         UserDTO user=userService.findUserById(video.getOwnerId());
-        List<CaptionProperties> captionProperties=captionService.findCaptionByVideoId(id);
+        List<CaptionPropertiesDTO> captionProperties=captionService.findCaptionByVideoId(id);
         List<CommentDTO> comments=commentService.findComments(id, maxComments);
         dto.setId(id);
         dto.setName(video.getName());

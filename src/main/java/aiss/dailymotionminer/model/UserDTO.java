@@ -8,9 +8,9 @@ import javax.annotation.processing.Generated;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
     "id",
-    "username",
-    "url",
-    "avatar_720_url"
+    "name",
+    "user_link",
+    "picture_link"
 })
 @Generated("jsonschema2pojo")
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -18,11 +18,11 @@ public class UserDTO {
 
     @JsonProperty("id")
     private String id;
-    @JsonProperty("username")
+    @JsonProperty("name")
     private String name;
-    @JsonProperty("url")
+    @JsonProperty("user_link")
     private String user_link;
-    @JsonProperty("avatar_720_url")
+    @JsonProperty("picture_link")
     private String picture_link;
 
     @JsonProperty("id")
@@ -35,32 +35,32 @@ public class UserDTO {
         this.id = id;
     }
 
-    @JsonProperty("username")
+    @JsonProperty("name")
     public String getName() {
         return name;
     }
 
-    @JsonProperty("username")
+    @JsonProperty("name")
     public void setName(String name) {
         this.name = name;
     }
 
-    @JsonProperty("url")
+    @JsonProperty("user_link")
     public String getUser_link() {
         return user_link;
     }
 
-    @JsonProperty("url")
+    @JsonProperty("user_link")
     public void setUser_link(String user_link) {
         this.user_link = user_link;
     }
 
-    @JsonProperty("avatar_720_url")
+    @JsonProperty("picture_link")
     public String getPicture_link() {
         return picture_link;
     }
 
-    @JsonProperty("avatar_720_url")
+    @JsonProperty("picture_link")
     public void setPicture_link(String picture_link) {
         this.picture_link = picture_link;
     }

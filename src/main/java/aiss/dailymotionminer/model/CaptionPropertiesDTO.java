@@ -7,29 +7,27 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import javax.annotation.processing.Generated;
-import java.util.List;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
     "id",
-        "text",
-        "createdOn"
+    "link",
+    "language"
 })
 @Generated("jsonschema2pojo")
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class CommentDTO {
+public class CaptionPropertiesDTO {
 
     @JsonProperty("id")
     private String id;
-    @JsonProperty("text")
-    private String text;
-    @JsonProperty("createdOn")
-    private Integer releaseTime;
-
+    @JsonProperty("link")
+    private String link;
+    @JsonProperty("language")
+    private String language;
 
     @JsonProperty("id")
     public String getId() {
-        return id ;
+        return id;
     }
 
     @JsonProperty("id")
@@ -37,32 +35,32 @@ public class CommentDTO {
         this.id = id;
     }
 
-    @JsonProperty("text")
-    public String getText() {
-        return text;
+    @JsonProperty("link")
+    public String getLink() {
+        return link;
     }
 
-    @JsonProperty("text")
-    public void setText(String text) {
-        this.text = text;
+    @JsonProperty("link")
+    public void setLink(String link) {
+        this.link = link;
     }
 
-    @JsonProperty("createdOn")
-    public Integer getReleaseTime() {
-        return releaseTime;
+    @JsonProperty("language")
+    public String getLanguage() {
+        return language;
     }
 
-    @JsonProperty("createdOn")
-    public void setReleaseTime(Integer releaseTime) {
-        this.releaseTime = releaseTime;
+    @JsonProperty("language")
+    public void setLanguage(String language) {
+        this.language = language;
     }
 
     @Override
     public String toString() {
-        return "TagDTO{" +
+        return "CaptionProperties{" +
                 "id='" + id + '\'' +
-                ", text=" + text +
-                ", releaseTime=" + releaseTime +
+                ", link='" + link + '\'' +
+                ", language='" + language + '\'' +
                 '}';
     }
 }

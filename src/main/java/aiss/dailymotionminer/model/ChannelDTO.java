@@ -12,9 +12,9 @@ import java.util.List;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
     "id",
-    "screenname",
+    "name",
     "description",
-    "created_time",
+    "createdTime",
         "videos"
 })
 @Generated("jsonschema2pojo")
@@ -23,11 +23,11 @@ public class ChannelDTO {
 
     @JsonProperty("id")
     private String id;
-    @JsonProperty("screenname")
+    @JsonProperty("name")
     private String name;
     @JsonProperty("description")
     private String description;
-    @JsonProperty("created_time")
+    @JsonProperty("createdTime")
     private Integer createdTime;
     @JsonProperty("videos")
     private List<VideoDTO> videos;
@@ -42,12 +42,12 @@ public class ChannelDTO {
         this.id = id;
     }
 
-    @JsonProperty("screenname")
+    @JsonProperty("name")
     public String getName() {
         return name;
     }
 
-    @JsonProperty("screenname")
+    @JsonProperty("name")
     public void setName(String name) {
         this.name = name;
     }
@@ -62,12 +62,12 @@ public class ChannelDTO {
         this.description = description;
     }
 
-    @JsonProperty("created_time")
+    @JsonProperty("createdTime")
     public Integer getCreatedTime() {
         return createdTime;
     }
 
-    @JsonProperty("created_time")
+    @JsonProperty("createdTime")
     public void setCreatedTime(Integer createdTime) {
         this.createdTime = createdTime;
     }
