@@ -20,7 +20,7 @@ public class UserService {
             return new UserDTO();
         }
         UserDTO user=new UserDTO();
-        user.setId(id);
+        user.setId(null);
         user.setName(channelUser.getUsername());
         user.setUser_link(channelUser.getUrl());
         user.setPicture_link(channelUser.getAvatar720Url());

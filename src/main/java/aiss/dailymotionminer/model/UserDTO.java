@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.*;
 
 import javax.annotation.processing.Generated;
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
     "id",
     "name",

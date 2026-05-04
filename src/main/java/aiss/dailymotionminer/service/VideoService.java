@@ -53,21 +53,6 @@ public class VideoService {
             page++;
         }
         return res;
-
-//        VideosResponse videos=restTemplate.getForObject(BASE_URI+"/user/"+userId+"/videos?limit="+maxVideos+"&page="+maxPages, VideosResponse.class);
-//        if (videos==null){
-//            return List.of();
-//        }
-//        List<VideoDTO> allVideos=videos.getList();
-//        List<VideoDTO> res=new ArrayList<>();
-//        for (int i=0; i<allVideos.size(); i++){
-//            String id=allVideos.get(i).getId();
-//            VideoDTO dto=findVideoById(id);
-//            if (dto != null){
-//                res.add(dto);
-//            }
-//        }
-//        return res;
     }
 
     public VideoDTO findVideoById(String id){
