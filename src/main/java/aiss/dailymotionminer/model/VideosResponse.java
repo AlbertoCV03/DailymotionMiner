@@ -3,6 +3,7 @@ package aiss.dailymotionminer.model;
 
 import javax.annotation.processing.Generated;
 
+import aiss.dailymotionminer.model.objectsDTO.VideoDTO;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;

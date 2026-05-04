@@ -1,12 +1,10 @@
 package aiss.dailymotionminer.controller;
 
-import aiss.dailymotionminer.model.ChannelDTO;
+import aiss.dailymotionminer.model.objectsDTO.ChannelDTO;
 import aiss.dailymotionminer.service.ChannelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
-import java.net.http.HttpResponse;
 
 @RestController
 @RequestMapping("/dailymotion/v1")

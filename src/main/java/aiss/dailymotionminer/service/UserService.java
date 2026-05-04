@@ -1,7 +1,7 @@
 package aiss.dailymotionminer.service;
 
 import aiss.dailymotionminer.model.ChannelUser;
-import aiss.dailymotionminer.model.UserDTO;
+import aiss.dailymotionminer.model.objectsDTO.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;

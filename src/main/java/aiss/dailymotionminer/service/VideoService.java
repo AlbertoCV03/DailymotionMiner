@@ -1,8 +1,11 @@
 package aiss.dailymotionminer.service;
 
 import aiss.dailymotionminer.model.*;
+import aiss.dailymotionminer.model.objectsDTO.CaptionPropertiesDTO;
+import aiss.dailymotionminer.model.objectsDTO.CommentDTO;
+import aiss.dailymotionminer.model.objectsDTO.UserDTO;
+import aiss.dailymotionminer.model.objectsDTO.VideoDTO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
