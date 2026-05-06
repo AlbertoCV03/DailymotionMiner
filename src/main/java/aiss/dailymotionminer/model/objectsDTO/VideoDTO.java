@@ -15,10 +15,10 @@ import java.util.List;
     "name",
     "description",
     "releaseTime",
-        "captions",
+        "user",
         "comments",
         "userId",
-        "user"
+        "captions"
 })
 @Generated("jsonschema2pojo")
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -32,7 +32,7 @@ public class VideoDTO {
     private String description;
     @JsonProperty("releaseTime")
     private Integer releaseTime;
-    @JsonProperty("caption")
+    @JsonProperty("captions")
     private List<CaptionPropertiesDTO> captionProperties;
     @JsonProperty("comments")
     private List<CommentDTO> comment;
@@ -79,12 +79,12 @@ public class VideoDTO {
         this.releaseTime = releaseTime;
     }
 
-    @JsonProperty("caption")
+    @JsonProperty("captions")
     public List<CaptionPropertiesDTO> getCaptionProperties() {
         return captionProperties;
     }
 
-    @JsonProperty("caption")
+    @JsonProperty("captions")
     public void setCaptionProperties(List<CaptionPropertiesDTO> captionProperties) {
         this.captionProperties = captionProperties;
     }

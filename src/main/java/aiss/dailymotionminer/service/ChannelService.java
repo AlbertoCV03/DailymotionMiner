@@ -20,12 +20,12 @@ public class ChannelService {
 
     private static final String BASE_URI = "https://api.dailymotion.com/user";
 
-    public ChannelDTO findChannelById(String id, int maxVideos, int maxComments){
+    public ChannelDTO findChannelById(String id, int maxVideos, int maxPages){
         ChannelUser channelUser=restTemplate.getForObject(BASE_URI+"/"+id+"?fields=id,screenname,description,created_time,username,url,avatar_720_url", ChannelUser.class);
         if (channelUser==null){
             return null;
         }
-        List<VideoDTO> videos=videoService.findAllVideosOfAChannelById(id, maxVideos, maxComments);
+        List<VideoDTO> videos=videoService.findAllVideosOfAChannelById(id, maxVideos, maxPages);
         ChannelDTO channel=new ChannelDTO();
         channel.setId(channelUser.getId());
         channel.setName(channelUser.getScreenname());
@@ -35,8 +35,8 @@ public class ChannelService {
         return channel;
     }
 
-    public ChannelDTO postChannelDTOById(String id, int maxVideos, int maxComments){
-        ChannelDTO channelDTO=findChannelById(id, maxVideos, maxComments);
+    public ChannelDTO postChannelDTOById(String id, int maxVideos, int maxPages){
+        ChannelDTO channelDTO=findChannelById(id, maxVideos, maxPages);
         restTemplate.postForObject("http://localhost:8080/videominer/channels", channelDTO, ChannelDTO.class);
         return channelDTO;
     }
