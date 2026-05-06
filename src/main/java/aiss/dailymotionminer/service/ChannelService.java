@@ -27,7 +27,7 @@ public class ChannelService {
         }
         List<VideoDTO> videos=videoService.findAllVideosOfAChannelById(id, maxVideos, maxComments);
         ChannelDTO channel=new ChannelDTO();
-        channel.setId(id);
+        channel.setId(channelUser.getId());
         channel.setName(channelUser.getScreenname());
         channel.setDescription(channelUser.getDescription());
         channel.setCreatedTime(channelUser.getCreatedTime());
