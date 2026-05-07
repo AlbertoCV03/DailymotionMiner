@@ -31,7 +31,7 @@ public class VideoDTO {
     @JsonProperty("description")
     private String description;
     @JsonProperty("releaseTime")
-    private Integer releaseTime;
+    private String releaseTime;
     @JsonProperty("captions")
     private List<CaptionPropertiesDTO> captionProperties;
     @JsonProperty("comments")
@@ -70,12 +70,12 @@ public class VideoDTO {
     }
 
     @JsonProperty("releaseTime")
-    public Integer getReleaseTime() {
+    public String getReleaseTime() {
         return releaseTime;
     }
 
     @JsonProperty("releaseTime")
-    public void setReleaseTime(Integer releaseTime) {
+    public void setReleaseTime(String releaseTime) {
         this.releaseTime = releaseTime;
     }
 

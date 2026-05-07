@@ -23,7 +23,7 @@ public class CommentDTO {
     @JsonProperty("text")
     private String text;
     @JsonProperty("createdOn")
-    private Integer releaseTime;
+    private String releaseTime;
 
 
     @JsonProperty("id")
@@ -47,12 +47,12 @@ public class CommentDTO {
     }
 
     @JsonProperty("createdOn")
-    public Integer getReleaseTime() {
+    public String getReleaseTime() {
         return releaseTime;
     }
 
     @JsonProperty("createdOn")
-    public void setReleaseTime(Integer releaseTime) {
+    public void setReleaseTime(String releaseTime) {
         this.releaseTime = releaseTime;
     }
 

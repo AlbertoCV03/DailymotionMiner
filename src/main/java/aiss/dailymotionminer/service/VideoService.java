@@ -9,6 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,6 +66,9 @@ public class VideoService {
         if (video==null){
             return null;
         }
+        Long epoch=video.getReleaseTime().longValue();
+        Instant instant=Instant.ofEpochSecond(epoch);
+        String fecha=LocalDateTime.ofInstant(instant, ZoneId.systemDefault()).toString();
         VideoDTO dto=new VideoDTO();
         UserDTO user=userService.findUserById(video.getOwnerId());
         List<CaptionPropertiesDTO> captionProperties=captionService.findCaptionByVideoId(id);
@@ -70,7 +76,7 @@ public class VideoService {
         dto.setId(id);
         dto.setName(video.getName());
         dto.setDescription(video.getDescription());
-        dto.setReleaseTime(video.getReleaseTime());
+        dto.setReleaseTime(fecha);
         dto.setCaptionProperties(captionProperties);
         dto.setComment(comments);
         dto.setUser(user);

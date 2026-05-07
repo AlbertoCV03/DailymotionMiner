@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.List;
 
 @Service
@@ -25,12 +28,15 @@ public class ChannelService {
         if (channelUser==null){
             return null;
         }
+        Long epoch=channelUser.getCreatedTime().longValue();
+        Instant instant=Instant.ofEpochSecond(epoch);
+        String fecha= LocalDateTime.ofInstant(instant, ZoneId.systemDefault()).toString();
         List<VideoDTO> videos=videoService.findAllVideosOfAChannelById(id, maxVideos, maxPages);
         ChannelDTO channel=new ChannelDTO();
         channel.setId(channelUser.getId());
         channel.setName(channelUser.getScreenname());
         channel.setDescription(channelUser.getDescription());
-        channel.setCreatedTime(channelUser.getCreatedTime());
+        channel.setCreatedTime(fecha);
         channel.setVideos(videos);
         return channel;
     }
