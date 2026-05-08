@@ -67,8 +67,7 @@ public class VideoService {
             return null;
         }
         Long epoch=video.getReleaseTime().longValue();
-        Instant instant=Instant.ofEpochSecond(epoch);
-        String fecha=LocalDateTime.ofInstant(instant, ZoneId.systemDefault()).toString();
+        String fecha=Instant.ofEpochSecond(epoch).toString();
         VideoDTO dto=new VideoDTO();
         UserDTO user=userService.findUserById(video.getOwnerId());
         List<CaptionPropertiesDTO> captionProperties=captionService.findCaptionByVideoId(id);

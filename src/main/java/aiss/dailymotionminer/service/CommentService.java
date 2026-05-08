@@ -24,8 +24,7 @@ public class CommentService {
     public List<CommentDTO> findComments(String videoId){
         Video video=restTemplate.getForObject(BASE_URI+"/"+videoId+"?fields=tags,created_time", Video.class);
         Long epoch=video.getReleaseTime().longValue();
-        Instant instant=Instant.ofEpochSecond(epoch);
-        String fecha= LocalDateTime.ofInstant(instant, ZoneId.systemDefault()).toString();
+        String fecha=Instant.ofEpochSecond(epoch).toString();
         List<CommentDTO> res=new ArrayList<>();
         if (video != null && video.getComment() != null && !video.getComment().isEmpty()){
             for (int i=0; i<video.getComment().size(); i++) {

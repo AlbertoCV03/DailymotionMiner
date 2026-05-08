@@ -29,8 +29,7 @@ public class ChannelService {
             return null;
         }
         Long epoch=channelUser.getCreatedTime().longValue();
-        Instant instant=Instant.ofEpochSecond(epoch);
-        String fecha= LocalDateTime.ofInstant(instant, ZoneId.systemDefault()).toString();
+        String fecha=Instant.ofEpochSecond(epoch).toString();
         List<VideoDTO> videos=videoService.findAllVideosOfAChannelById(id, maxVideos, maxPages);
         ChannelDTO channel=new ChannelDTO();
         channel.setId(channelUser.getId());
