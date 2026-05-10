@@ -1,70 +1,47 @@
-# OpenAPI Definition
+# Dailymotion Channel API Documentation
 
-## General Information
+## Overview
 
-| Field | Value |
-|---|---|
-| OpenAPI Version | `3.1.0` |
-| Title | `OpenAPI definition` |
-| Version | `v0` |
-
----
-
-# Servers
-
-| URL | Description |
-|---|---|
-| `http://localhost:8082` | Generated server url |
-
----
-
-# Tags
-
-## Channel
-Channel operations
+- **OpenAPI Version:** 3.1.0
+- **API Version:** v0
+- **Base URL:** `http://localhost:8082`
+- **Tag:** Channel
 
 ---
 
 # Endpoints
 
-## GET `/dailymotion/v1/{channelId}`
+## `GET /dailymotion/v1/{channelId}`
 
-### Summary
-Retrieve a channel by its channel id
+Retrieves a Dailymotion channel by its channel ID.
 
 ### Description
-Get a `ChannelDTO` object by specifying its channel id.
 
-### Operation ID
-`getChannel`
+Returns a `ChannelDTO` object by specifying its channel ID.
 
-### Parameters
+### Path Parameters
 
-| Name | In | Type | Required | Description | Default | Example |
-|---|---|---|---|---|---|---|
-| `channelId` | `path` | `string` | ✅ | Name of channel to be searched | - | - |
-| `maxVideos` | `query` | `integer (int32)` | ❌ | Maximum number of videos to be searched | `10` | `1` |
-| `maxPages` | `query` | `integer (int32)` | ❌ | Maximum number of pages per request to be searched | `2` | - |
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `channelId` | string | Yes | The ID of the channel to retrieve |
+
+### Query Parameters
+
+| Name | Type | Required | Default | Description | Example |
+|------|------|----------|---------|-------------|---------|
+| `maxVideos` | integer | No | `10` | Maximum number of videos to be searched | `1` |
+| `maxPages` | integer | No | `2` | Maximum number of pages per request to be searched | - |
 
 ### Responses
 
----
-
 #### `200 OK`
-
-**Description:** List of channels
+Channel retrieved successfully.
 
 **Content-Type:** `application/json`
 
-##### Schema
+**Schema:** `ChannelDTO`
 
-```json
-{
-  "$ref": "#/components/schemas/ChannelDTO"
-}
-```
-
-##### Example Response
+**Example Response**
 
 ```json
 {
@@ -76,7 +53,7 @@ Get a `ChannelDTO` object by specifying its channel id.
     {
       "id": "xa8nv0g",
       "name": "Hidden Companionship | HD 1080p",
-      "description": "Hidden Companionship - Serie completa en español.",
+      "description": "Hidden Companionship - Serie completa en español...",
       "releaseTime": "2026-05-08T22:36:17Z",
       "user": {
         "id": null,
@@ -88,11 +65,6 @@ Get a `ChannelDTO` object by specifying its channel id.
         {
           "id": "656d498a-4913-43ba-9fff-ed3cbc6d94c2",
           "text": "hidden companionship",
-          "createdOn": "2026-05-08T22:36:17Z"
-        },
-        {
-          "id": "d25627e7-3f07-4715-99ae-edee495416b4",
-          "text": "drama español",
           "createdOn": "2026-05-08T22:36:17Z"
         }
       ],
@@ -108,159 +80,71 @@ Get a `ChannelDTO` object by specifying its channel id.
 }
 ```
 
----
-
 #### `404 Not Found`
-
-**Description:** ❌ **Channel not found**
+❌ *Channel not found*
 
 ---
 
-## POST `/dailymotion/v1/{id}`
+## `POST /dailymotion/v1/{id}`
 
-### Summary
-Save a channel by its channel id
+Saves a Dailymotion channel to VideoMiner by its channel ID.
 
 ### Description
-Post a `ChannelDTO` object to VideoMiner by specifying its channel id.
 
-### Operation ID
-`postChannel`
+Posts a `ChannelDTO` object to VideoMiner by specifying its channel ID.
 
-### Parameters
+### Path Parameters
 
-| Name | In | Type | Required | Description | Default |
-|---|---|---|---|---|---|
-| `id` | `path` | `string` | ✅ | Name of channel to be created | - |
-| `maxVideos` | `query` | `integer (int32)` | ❌ | Maximum number of videos to be included | `10` |
-| `maxPages` | `query` | `integer (int32)` | ❌ | Maximum number of pages per request to be included | `2` |
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `id` | string | Yes | Name of channel to be created |
+
+### Query Parameters
+
+| Name | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `maxVideos` | integer | No | `10` | Maximum number of videos to be included |
+| `maxPages` | integer | No | `2` | Maximum number of pages per request to be included |
 
 ### Responses
 
----
-
 #### `201 Created`
-
-**Description:** Channel successfully created
+Channel successfully created.
 
 **Content-Type:** `application/json`
 
-##### Schema
-
-```json
-{
-  "$ref": "#/components/schemas/ChannelDTO"
-}
-```
-
----
+**Schema:** `ChannelDTO`
 
 #### `500 Internal Server Error`
-
-**Description:**  
-The sent channel object was incorrectly formed. Usually caused by a non existing channel name.
+The sent channel object was incorrectly formed, usually caused by a non-existing channel name.
 
 ---
 
-# Components
-
-# Schemas
-
----
-
-## `CaptionPropertiesDTO`
-
-```json
-{
-  "type": "object",
-  "properties": {
-    "id": {
-      "type": "string"
-    },
-    "link": {
-      "type": "string"
-    },
-    "language": {
-      "type": "string"
-    }
-  }
-}
-```
-
----
+# Data Models
 
 ## `ChannelDTO`
 
 ```json
 {
-  "type": "object",
-  "properties": {
-    "id": {
-      "type": "string"
-    },
-    "name": {
-      "type": "string"
-    },
-    "description": {
-      "type": "string"
-    },
-    "createdTime": {
-      "type": "string"
-    },
-    "videos": {
-      "type": "array",
-      "items": {
-        "$ref": "#/components/schemas/VideoDTO"
-      }
-    }
-  }
+  "id": "string",
+  "name": "string",
+  "description": "string",
+  "createdTime": "string",
+  "videos": [
+    "VideoDTO"
+  ]
 }
 ```
 
----
+### Fields
 
-## `CommentDTO`
-
-```json
-{
-  "type": "object",
-  "properties": {
-    "id": {
-      "type": "string"
-    },
-    "text": {
-      "type": "string"
-    },
-    "createdOn": {
-      "type": "string"
-    }
-  }
-}
-```
-
----
-
-## `UserDTO`
-
-```json
-{
-  "type": "object",
-  "properties": {
-    "id": {
-      "type": "string"
-    },
-    "name": {
-      "type": "string"
-    },
-    "user_link": {
-      "type": "string"
-    },
-    "picture_link": {
-      "type": "string"
-    }
-  }
-}
-```
+| Field | Type | Description |
+|------|------|-------------|
+| `id` | string | Channel ID |
+| `name` | string | Channel name |
+| `description` | string | Channel description |
+| `createdTime` | string | Channel creation timestamp |
+| `videos` | `VideoDTO[]` | List of videos |
 
 ---
 
@@ -268,35 +152,86 @@ The sent channel object was incorrectly formed. Usually caused by a non existing
 
 ```json
 {
-  "type": "object",
-  "properties": {
-    "id": {
-      "type": "string"
-    },
-    "name": {
-      "type": "string"
-    },
-    "description": {
-      "type": "string"
-    },
-    "releaseTime": {
-      "type": "string"
-    },
-    "user": {
-      "$ref": "#/components/schemas/UserDTO"
-    },
-    "comments": {
-      "type": "array",
-      "items": {
-        "$ref": "#/components/schemas/CommentDTO"
-      }
-    },
-    "captions": {
-      "type": "array",
-      "items": {
-        "$ref": "#/components/schemas/CaptionPropertiesDTO"
-      }
-    }
-  }
+  "id": "string",
+  "name": "string",
+  "description": "string",
+  "releaseTime": "string",
+  "user": "UserDTO",
+  "comments": ["CommentDTO"],
+  "captions": ["CaptionPropertiesDTO"]
 }
 ```
+
+### Fields
+
+| Field | Type | Description |
+|------|------|-------------|
+| `id` | string | Video ID |
+| `name` | string | Video title |
+| `description` | string | Video description |
+| `releaseTime` | string | Video publication timestamp |
+| `user` | `UserDTO` | Video author information |
+| `comments` | `CommentDTO[]` | Video comments |
+| `captions` | `CaptionPropertiesDTO[]` | Available captions |
+
+---
+
+## `UserDTO`
+
+```json
+{
+  "id": "string",
+  "name": "string",
+  "user_link": "string",
+  "picture_link": "string"
+}
+```
+
+### Fields
+
+| Field | Type | Description |
+|------|------|-------------|
+| `id` | string | User ID |
+| `name` | string | Username |
+| `user_link` | string | Link to the user's Dailymotion page |
+| `picture_link` | string | Profile image URL |
+
+---
+
+## `CommentDTO`
+
+```json
+{
+  "id": "string",
+  "text": "string",
+  "createdOn": "string"
+}
+```
+
+### Fields
+
+| Field | Type | Description |
+|------|------|-------------|
+| `id` | string | Comment ID |
+| `text` | string | Comment text |
+| `createdOn` | string | Comment timestamp |
+
+---
+
+## `CaptionPropertiesDTO`
+
+```json
+{
+  "id": "string",
+  "link": "string",
+  "language": "string"
+}
+```
+
+### Fields
+
+| Field | Type | Description |
+|------|------|-------------|
+| `id` | string | Caption ID |
+| `link` | string | URL to the subtitle file |
+| `language` | string | Caption language code |
