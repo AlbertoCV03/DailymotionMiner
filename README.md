@@ -6,7 +6,7 @@
 |---|---|
 | OpenAPI Version | `3.1.0` |
 | Title | `OpenAPI definition` |
-| API Version | `v0` |
+| Version | `v0` |
 
 ---
 
@@ -25,32 +25,34 @@ Channel operations
 
 ---
 
-# Paths
+# Endpoints
 
-## POST `/dailymotion/v1/{id}`
+## GET `/dailymotion/v1/{channelId}`
 
 ### Summary
-Save a channel by its channel id
+Retrieve a channel by its channel id
 
 ### Description
-Post a `ChannelDTO` object to VideoMiner by specifying its channel id
+Get a `ChannelDTO` object by specifying its channel id.
 
 ### Operation ID
-`postChannel`
+`getChannel`
 
 ### Parameters
 
-| Name | In | Type | Required | Description | Default |
-|---|---|---|---|---|---|
-| `id` | `path` | `string` | ✅ | Name of channel to be created | - |
-| `maxVideos` | `query` | `integer (int32)` | ❌ | Maximum number of videos to be included | `10` |
-| `maxPages` | `query` | `integer (int32)` | ❌ | Maximum number of pages per request to be included | `2` |
+| Name | In | Type | Required | Description | Default | Example |
+|---|---|---|---|---|---|---|
+| `channelId` | `path` | `string` | ✅ | Name of channel to be searched | - | - |
+| `maxVideos` | `query` | `integer (int32)` | ❌ | Maximum number of videos to be searched | `10` | `1` |
+| `maxPages` | `query` | `integer (int32)` | ❌ | Maximum number of pages per request to be searched | `2` | - |
 
 ### Responses
 
-#### `201 Created`
+---
 
-**Description:** Channel successfully created
+#### `200 OK`
+
+**Description:** List of channels
 
 **Content-Type:** `application/json`
 
@@ -62,52 +64,7 @@ Post a `ChannelDTO` object to VideoMiner by specifying its channel id
 }
 ```
 
----
-
-#### `500 Internal Server Error`
-
-**Description:**  
-The sent channel object was incorrectly formed. Usually caused by a non existing channel name
-
----
-
-# GET `/dailymotion/v1/{channelId}`
-
-### Summary
-Retrieve a channel by its channel id
-
-### Description
-Get a `ChannelDTO` object by specifying its channel id
-
-### Operation ID
-`getChannel`
-
-### Parameters
-
-| Name | In | Type | Required | Description | Default | Example |
-|---|---|---|---|---|---|---|
-| `maxVideos` | `query` | `integer (int32)` | ❌ | Maximum number of videos to be searched | `10` | `1` |
-| `maxPages` | `query` | `integer (int32)` | ❌ | Maximum number of pages per request to be searched | `2` | - |
-
-### Responses
-
----
-
-## `200 OK`
-
-**Description:** List of channels
-
-**Content-Type:** `application/json`
-
-### Schema
-
-```json
-{
-  "$ref": "#/components/schemas/ChannelDTO"
-}
-```
-
-### Example Response
+##### Example Response
 
 ```json
 {
@@ -142,7 +99,7 @@ Get a `ChannelDTO` object by specifying its channel id
       "captions": [
         {
           "id": "xa8nv0g.es",
-          "link": "https://static2.dmcdn.net/...",
+          "link": "https://static2.dmcdn.net/.../subtitle_es.srt",
           "language": "es"
         }
       ]
@@ -153,9 +110,55 @@ Get a `ChannelDTO` object by specifying its channel id
 
 ---
 
-## `404 Not Found`
+#### `404 Not Found`
 
 **Description:** ❌ **Channel not found**
+
+---
+
+## POST `/dailymotion/v1/{id}`
+
+### Summary
+Save a channel by its channel id
+
+### Description
+Post a `ChannelDTO` object to VideoMiner by specifying its channel id.
+
+### Operation ID
+`postChannel`
+
+### Parameters
+
+| Name | In | Type | Required | Description | Default |
+|---|---|---|---|---|---|
+| `id` | `path` | `string` | ✅ | Name of channel to be created | - |
+| `maxVideos` | `query` | `integer (int32)` | ❌ | Maximum number of videos to be included | `10` |
+| `maxPages` | `query` | `integer (int32)` | ❌ | Maximum number of pages per request to be included | `2` |
+
+### Responses
+
+---
+
+#### `201 Created`
+
+**Description:** Channel successfully created
+
+**Content-Type:** `application/json`
+
+##### Schema
+
+```json
+{
+  "$ref": "#/components/schemas/ChannelDTO"
+}
+```
+
+---
+
+#### `500 Internal Server Error`
+
+**Description:**  
+The sent channel object was incorrectly formed. Usually caused by a non existing channel name.
 
 ---
 
